@@ -38,6 +38,7 @@ function getData() {
 							+ data.results[i].poster_path;
 
 				}
+				console.log(data.results[i].poster_path);
 
 				var html_code = "<div class='col-lg-8 my-4'>"
 						+ "<h4 id='nameofmovie' class='mb-3 text-white'>"
@@ -118,12 +119,13 @@ function ShowFavourite() {
 					releaseDateNotAvialable = myarr[i].releasedate;
 				}
 
-				if (myarr[i].poster == "") {
+				if (myarr[i].poster == "http://image.tmdb.org/t/p/w500/null") {
 					movieposter = "/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/images/notavilable.jpg";
 				} else {
 					movieposter = myarr[i].poster;
 
 				}
+				console.log(myarr[i].poster);
 
 				var html_code = "<div class='col-lg-8 my-4'>"
 						+ "<h4 id='nameofmovie' class='mb-3 text-white'>"
