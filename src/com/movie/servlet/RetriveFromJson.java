@@ -30,7 +30,7 @@ public class RetriveFromJson extends HttpServlet {
     	JSONObject obj = new JSONObject();
     	JSONArray arr = new JSONArray();
     	try {
-				arr = (JSONArray)parser.parse(new FileReader("/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/favorite.json"));
+				arr = (JSONArray)parser.parse(new FileReader("/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/favorit.json"));
 				out.println(arr);
 				/*String s;
 				for(int i=0;i<arr.size();i++) {

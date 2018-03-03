@@ -1,5 +1,5 @@
-var poster;
 var data;
+//"http://image.tmdb.org/t/p/w500/"
 function getData() {
 	var xmlHttp = new XMLHttpRequest();
 	var word = document.getElementById("usertext").value;
@@ -30,14 +30,7 @@ function getData() {
 				} else {
 					releaseDateNotAvialable = data.results[i].release_date;
 				}
-
-				if (data.results[i].poster_path == null) {
-					poster = "/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/images/notavilable.jpg";
-				} else {
-					poster = "http://image.tmdb.org/t/p/w500/"
-							+ data.results[i].poster_path;
-
-				}
+				
 				console.log(data.results[i].poster_path);
 
 				var html_code = "<div class='col-lg-8 my-4' style=' background-color: white;'>"
@@ -66,8 +59,8 @@ function getData() {
 						+ ") class='btn btn-sm btn-secondary'>Add To Favourite</button>"
 						+ "</div>"
 						+ "<div class='col-md-4 align-self-center my-4'>"
-						+ "<img id='posterofmovie' class='img-fluid d-block' src='"
-						+ poster + "'> </div>";
+						+ "<img id='posterofmovie' class='img-fluid d-block' src='http://image.tmdb.org/t/p/w500/"
+						+ data.results[i].poster_path+ "'> </div>";
 				document.getElementById('cardcontainerformovie')
 						.insertAdjacentHTML('beforeend', html_code);
 			}
@@ -89,12 +82,14 @@ function addToFav(i) {
 	//values to be sent to servlet
 	var params = "moviename=" + data.results[i].title + "&ratings="
 			+ data.results[i].vote_average + "&releasedate="
-			+ data.results[i].release_date + "&poster=" + poster + "&overview="
+			+ data.results[i].release_date + "&poster=" + data.results[i].poster_path + "&overview="
 			+ data.results[i].overview;
 	xmlhttp.open('GET', "http://localhost:8080/MovieMagic/JsonParsing?"
 			+ params, true);
 	xmlhttp.send();
 }
+
+
 
 function ShowFavourite() {
 	var xmlhttp = new XMLHttpRequest();
@@ -118,12 +113,6 @@ function ShowFavourite() {
 					releaseDateNotAvialable = myarr[i].releasedate;
 				}
 
-				if (myarr[i].poster == "http://image.tmdb.org/t/p/w500/null") {
-					movieposter = "/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/images/notavilable.jpg";
-				} else {
-					movieposter = myarr[i].poster;
-
-				}
 				var html_code = "<div class='col-lg-8 my-4' style=' background-color: white;'>"
 						+ "<h4 id='nameofmovie' class='mb-3 one'><strong>"
 						+ myarr[i].moviename
@@ -145,13 +134,13 @@ function ShowFavourite() {
 						+ "</div>"
 						+ "</div>"
 						+ "</div>"
-						+ "<button id='favouritebutton' class='bg-primary' type='button' onClick=addToFav("
+						+ "<button id='favouritebutton' class='bg-primary' type='button' onClick=removeFromFav("
 						+ i
-						+ ") class='btn btn-sm btn-secondary'>Add To Favourite</button>"
+						+ ") class='btn btn-sm btn-secondary'>Remove From Fav</button>"
 						+ "</div>"
 						+ "<div class='col-md-4 align-self-center my-4'>"
-						+ "<img id='posterofmovie' class='img-fluid d-block' src='"
-						+ movieposter + "'> </div>";
+						+ "<img id='posterofmovie' class='img-fluid d-block' src='http://image.tmdb.org/t/p/w500/"
+						+ myarr[i].poster + "'> </div>";
 				document.getElementById('result').insertAdjacentHTML(
 						'beforeend', html_code);
 			}
@@ -161,7 +150,18 @@ function ShowFavourite() {
 			true);
 	xmlhttp.send();
 }
-
 function removeFromFav(i) {
+	var xmlhttp = new XMLHttpRequest();
 	alert(i);
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("favoritesadded").innerHTML = xmlhttp.responseText;
+		}
+	};
+	//values to be sent to servlet
+	var params = "moviename=" + data.results[i].title;
+	xmlhttp.open('GET', "http://localhost:8080/MovieMagic/RemoveMovie?"
+			+ params, true);
+	xmlhttp.send();
 }
+

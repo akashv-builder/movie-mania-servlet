@@ -61,10 +61,10 @@
 		<div class="row">
 			<div class="mx-auto text-center col-md-6">
 				<h3 class="display-4 my-3 one">Movie Mania</h3>
-				<p class="lead text-secondary rubic">Movie Mania is a wonderful website to
-					catch all the hollywood and bollywood movies at a single place and
-					watch their trailers to have a glimpse of the movie. If you are a
-					movie maniac, then you are at the right place.</p>
+				<p class="lead text-secondary rubic">Movie Mania is a wonderful
+					website to catch all the hollywood and bollywood movies at a single
+					place and watch their trailers to have a glimpse of the movie. If
+					you are a movie maniac, then you are at the right place.</p>
 			</div>
 		</div>
 		<div class="mx-auto text-center col-md-6">
@@ -86,6 +86,8 @@
 
 	</div>
 	<div id="favoritesadded">Alert if fav is added</div>
+	<button type="button" class="btn margintobutton mon"
+					onClick="ShowFavourite()">Show Favorites</button>
 	<div class="py-5 bg-primary">
 		<div class="container">
 			<div id="cardcontainerformovie" class="row rubic">

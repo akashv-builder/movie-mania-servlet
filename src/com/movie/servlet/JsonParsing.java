@@ -58,7 +58,7 @@ public class JsonParsing extends HttpServlet {
 		FileWriter jsonFile=null;
 		
 		try {
-		jsonFile =  new FileWriter("/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/favorite.json");
+		jsonFile =  new FileWriter("/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/favorit.json");
 		jsonFile.write(jarray.toString());
 		System.out.println(json.toString());
 		}catch(Exception e){
