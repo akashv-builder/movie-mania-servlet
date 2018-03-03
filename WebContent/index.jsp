@@ -20,28 +20,40 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
 <link rel="stylesheet" href="wireframe1.css">
+<link rel="stylesheet" href="mycss.css">
 </head>
 
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-dark"> <a
-		id="textcolourwhite" class="navbar-brand font-weight-bold one"
-		href="../Html/index.html">FlightGo.com</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#navbarSupportedContent"
-		aria-controls="navbarSupportedContent" aria-expanded="false"
-		aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<div class="btn-group col-6" role="group" aria-label="Basic example">
-			<button type="button" class="btn btn-secondary">Home</button>
-			<button type="button" class="btn btn-secondary"
-				onClick="ShowFavourite()">Show Favorites</button>
-			<button type="button" class="btn btn-secondary">Contact Us</button>
-		</div>
-	</div>
-	</nav>
+<nav class="navbar navbar-custom navbar-expand-lg" id="navbarcolour">
+			<a id="textcolourwhite" class="navbar-brand font-weight-bold one" href="index.html">Movie Mania</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<button type="button" class="btn margintobutton">Home</button>
+					</li>
+					<li class="nav-item active">
+						<button type="button" class="btn margintobutton" onClick="ShowFavourite()">Show Favorites</button>
+					</li>
+					<li class="nav-item active">
+						<button type="button" class="btn margintobutton">Support</button>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<img class="socialicons" src="../MovieMagic/images/facebook.png" alt="facebook">
+					<img class="socialicons" src="../images/insta.png" alt="insta">
+					<img class="socialicons" src="../images/twitter.png" alt="insta">
+				</form>
+				<div class="btn-group" role="group" aria-label="Basic example">
+					<button type="button" class="btn margintobutton">Sign Up</button>
+					<button type="button" class="btn margintobutton">Log In</button>
+				</div>
+			</div>
+		</nav>
+
 	<div class="container-fluid bg-info">
 		<div class="row">
 			<div class="mx-auto text-center col-md-6">

@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.margintobutton {
+	margin-right: 20px;
+	 background-color: white;
+}
+
+#textcolourwhite {
+	color: white;
+}
+
+#navbarcolour {
+	color: #1E90FF;
+}
+
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: #87CEFA;
+}
