@@ -7,58 +7,61 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- PAGE settings -->
-<link rel="icon"
-	href="https://templates.pingendo.com/assets/Pingendo_favicon.ico">
+<link rel="icon" href="#">
 <title>Movie Mania</title>
-<meta name="description"
-	content="Wireframe design of a landing page by Pingendo">
-<meta name="keywords"
-	content="Pingendo bootstrap example template wireframe landing">
-<meta name="author" content="Pingendo">
 <!-- CSS dependencies -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
 <link rel="stylesheet" href="wireframe1.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Patua+One|Arvo|Fira+Sans|Muli|Slabo+27px|Rubik|Work+Sans|Quicksand|Montserrat|Arimo|Fjalla+One"
+	rel="stylesheet">
 <link rel="stylesheet" href="mycss.css">
 </head>
 
 <body>
 
-<nav class="navbar navbar-custom navbar-expand-lg" id="navbarcolour">
-			<a id="textcolourwhite" class="navbar-brand font-weight-bold one" href="index.html">Movie Mania</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<button type="button" class="btn margintobutton">Home</button>
-					</li>
-					<li class="nav-item active">
-						<button type="button" class="btn margintobutton" onClick="ShowFavourite()">Show Favorites</button>
-					</li>
-					<li class="nav-item active">
-						<button type="button" class="btn margintobutton">Support</button>
-					</li>
-				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<img class="socialicons" src="../MovieMagic/images/facebook.png" alt="facebook">
-					<img class="socialicons" src="../images/insta.png" alt="insta">
-					<img class="socialicons" src="../images/twitter.png" alt="insta">
-				</form>
-				<div class="btn-group" role="group" aria-label="Basic example">
-					<button type="button" class="btn margintobutton">Sign Up</button>
-					<button type="button" class="btn margintobutton">Log In</button>
-				</div>
-			</div>
-		</nav>
+	<nav class="navbar navbar-custom navbar-expand-lg" id="navbarcolour">
+	<a id="textcolourwhite" class="navbar-brand font-weight-bold one"
+		href="index.html">Movie Mania</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<button type="button" class="btn margintobutton mon">Home</button>
+			</li>
+			<li class="nav-item active">
+				<button type="button" class="btn margintobutton mon"
+					onClick="ShowFavourite()">Show Favorites</button>
+			</li>
+			<li class="nav-item active">
+				<button type="button" class="btn margintobutton mon">Support</button>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0">
+			<img class="socialicons" src="../MovieMagic/images/facebook.png"
+				alt="facebook"> <img class="socialicons"
+				src="../images/insta.png" alt="insta"> <img
+				class="socialicons" src="../images/twitter.png" alt="insta">
+		</form>
+		<div class="btn-group" role="group" aria-label="Basic example">
+			<button type="button" class="btn margintobutton mon">Sign Up</button>
+			<button type="button" class="btn margintobutton mon">Log In</button>
+		</div>
+	</div>
+	</nav>
 
-	<div class="container-fluid bg-info">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="mx-auto text-center col-md-6">
-				<h3 class="display-4 my-3">Movie Mania</h3>
-				<p class="lead text-primary">Movie Mania is a wonderful app to
+				<h3 class="display-4 my-3 one">Movie Mania</h3>
+				<p class="lead text-secondary rubic">Movie Mania is a wonderful website to
 					catch all the hollywood and bollywood movies at a single place and
 					watch their trailers to have a glimpse of the movie. If you are a
 					movie maniac, then you are at the right place.</p>
@@ -85,7 +88,13 @@
 	<div id="favoritesadded">Alert if fav is added</div>
 	<div class="py-5 bg-primary">
 		<div class="container">
-			<div id="cardcontainerformovie" class="row"></div>
+			<div id="cardcontainerformovie" class="row rubic">
+				<center>Easy to use, Provide Access to both hollywood and
+					bollywood movies, Search for new movies in real time, Watch good
+					quality trailers of the selected movie, Rate the movies and let
+					other users see the ratings too, Check the rating for the movie
+					before booking the tickets.</center>
+			</div>
 			<div id="result" class="row"></div>
 		</div>
 	</div>
@@ -93,36 +102,29 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="mx-auto text-center col-md-6">
-					<h4 class="mb-3">
-						<b>Bold Heading 4</b>
+					<h4 class="mb-3 one">
+						<b>Top Reviews</b>
 					</h4>
 					<div class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner bg-light" role="listbox">
 							<div class="carousel-item p-5 active">
 								<div class="blockquote text-muted mb-0 px-2">
-									<p class="mb-0">#1 Blockquoute - Lorem ipsum dolor sit
-										amet, consectetur adipiscing elit, sed do eiusmod tempor
-										incididunt ut labore.</p>
-									<div class="blockquote-footer">Someone famous in My
-										memories</div>
+									<p class="mb-0">#1 Review - It occurred to me that I was an
+										absolute expert at the product I was pitching I was presenting
+										Monetate's products day in and day out to some of the biggest
+										brands in the country but people still didn't seem to really
+										get it.</p>
+									<div class="blockquote-footer">Ms.Falcone</div>
 								</div>
 							</div>
 							<div class="carousel-item p-5">
 								<div class="blockquote text-muted mb-0 px-">
-									<p class="mb-0">#2 Blockquoute - Lorem ipsum dolor sit
-										amet, consectetur adipiscing elit, sed do eiusmod tempor
-										incididunt ut labore.</p>
-									<div class="blockquote-footer">Someone famous in My
-										memories</div>
-								</div>
-							</div>
-							<div class="carousel-item p-5">
-								<div class="blockquote text-muted mb-0 px-">
-									<p class="mb-0">#3 Blockquoute - Lorem ipsum dolor sit
-										amet, consectetur adipiscing elit, sed do eiusmod tempor
-										incididunt ut labore.</p>
-									<div class="blockquote-footer">Someone famous in My
-										memories</div>
+									<p class="mb-0">#2 Review - There were a lot of times when
+										I felt like my greatest strength was actually holding me
+										back,” says Falcone. “When you're an expert on a product,
+										you're actually in real danger, because you're much more
+										likely to put your.</p>
+									<div class="blockquote-footer">Dr.Jojo</div>
 								</div>
 							</div>
 						</div>
@@ -140,51 +142,16 @@
 			</div>
 		</div>
 	</div>
-	<div class="bg-info p-4">
-		<div class="container">
-			<div class="row">
-				<div class="p-0 col-lg-4 col-md-6">
-					<img class="img-fluid"
-						src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyDW8nO9JhT_pEjebobq9pgUF2cEp0EUb1I&amp;markers=folsom+Ave+san+francisco&amp;center=folsom+Ave+san+francisco&amp;zoom=16&amp;size=640x450&amp;sensor=false&amp;scale=2">
-				</div>
-				<div class="col-md-5 align-self-center p-4 offset-md-1">
-					<h4>Heading</h4>
-					<p class="mb-4 text-primary">
-						795 Folsom Ave, Suite 600 <br>San Francisco, CA 94107 <br>
-						<abbr title="Phone">P:</abbr> (123) 456-7890
-					</p>
-					<div class="row text-center">
-						<div class="col-md-2 col-3">
-							<a href="#" target="_blank"><i
-								class="fa fa-facebook text-primary fa-2x"></i></a>
-						</div>
-						<div class="col-md-2 col-3">
-							<a href="#" target="_blank"><i
-								class="fa fa-twitter text-primary fa-2x"></i></a>
-						</div>
-						<div class="col-md-2 col-3">
-							<a href="#" target="_blank"><i
-								class="fa fa-instagram text-primary fa-2x"></i></a>
-						</div>
-						<div class="col-md-2 col-3">
-							<a href="#" target="_blank"><i
-								class="fa text-primary fa-2x fa-pinterest-p"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
 	<div class="bg-dark py-3">
 		<div class="container">
 			<div class="row d-flex justify-content-between">
 				<div class="col-lg-4 col-md-6">
-					<p class="text-secondary mb-0">Copyright - Lorem ipsum dolor
-						sit amet</p>
+					<p class="text-secondary mb-0">Copyright - Movie Mania</p>
 				</div>
 				<div class="col-lg-4 col-md-6">
-					<p class="text-secondary mb-0">2018 - Lorem ipsum dolor sit
-						amet</p>
+					<p class="text-secondary mb-0">2018 - All rights reserved by
+						the company</p>
 				</div>
 			</div>
 		</div>

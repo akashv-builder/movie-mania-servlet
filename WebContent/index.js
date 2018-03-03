@@ -41,22 +41,22 @@ function getData() {
 				console.log(data.results[i].poster_path);
 
 				var html_code = "<div class='col-lg-8 my-4' style=' background-color: white;'>"
-						+ "<h4 id='nameofmovie' class='mb-3'><strong>"
+						+ "<h4 id='nameofmovie' class='mb-3 one'><strong>"
 						+ data.results[i].title
 						+ "</strong></h4>"
 						+ "<div class='blockquote text-muted'>"
-						+ "<p id='descriptionofmovie' class='mb-0'>"
+						+ "<p id='descriptionofmovie' class='mb-0 rubic1'>"
 						+ data.results[i].overview
 						+ "</p>"
 						+ "<div class='row my-2'>"
-						+ "<div class='col-3'><strong>Release Date-</strong></div>"
-						+ "<div id='releasedateofmovie' class='col-9'>"
+						+ "<div class='col-3 rubic1'>Release Date-</div>"
+						+ "<div id='releasedateofmovie' class='col-9 rubic1'>"
 						+ releaseDateNotAvialable
 						+ "</div>"
 						+ "</div>"
 						+ "<div class='row my-2'>"
-						+ "<div class='col-3'><strong>Rating-</strong></div>"
-						+ "<div id='ratingofmovie' class='col-9'>"
+						+ "<div class='col-3 rubic1'>Rating-</div>"
+						+ "<div id='ratingofmovie' class='col-9 rubic1'>"
 						+ voteNotAvialable
 						+ "</div>"
 						+ "</div>"
@@ -68,27 +68,9 @@ function getData() {
 						+ "<div class='col-md-4 align-self-center my-4'>"
 						+ "<img id='posterofmovie' class='img-fluid d-block' src='"
 						+ poster + "'> </div>";
-
-				/*
-				 var html_code="<div class='card mb-3'>"+
-				 "<img class='card-img-top' src='"
-				 + poster + "' alt='poster unavilable'>"+
-				 "<div class='card-body'>"+
-				 "<h5 class='card-title'>"
-				 + data.results[i].title+"</h5>"+
-				 "<p class='card-text'>"+ data.results[i].overview+"</p>"+
-				 " <p class='card-text'><small class='text-muted'>Release Date-"+ releaseDateNotAvialable+"</small></p>"+
-				 " <p class='card-text'><small class='text-muted'>Rating-"+ voteNotAvialable+"</small></p>"
-				 + "<button id='favouritebutton' type='button' onClick=addToFav("
-				 + i
-				 + ") class='btn btn-sm btn-secondary'>Add To Favourite</button>"+
-				 "</div>"+
-				 "</div>";	*/
-
 				document.getElementById('cardcontainerformovie')
 						.insertAdjacentHTML('beforeend', html_code);
 			}
-
 		}
 	};
 	xmlHttp.open("GET", url, true);
@@ -142,58 +124,37 @@ function ShowFavourite() {
 					movieposter = myarr[i].poster;
 
 				}
-				console.log(myarr[i].poster);
-
-				
-
 				var html_code = "<div class='col-lg-8 my-4' style=' background-color: white;'>"
-						+ "<h4 id='nameofmovie' class='mb-3'><strong>"
+						+ "<h4 id='nameofmovie' class='mb-3 one'><strong>"
 						+ myarr[i].moviename
 						+ "</strong></h4>"
 						+ "<div class='blockquote text-muted'>"
-						+ "<p id='descriptionofmovie' class='mb-0'>"
+						+ "<p id='descriptionofmovie' class='mb-0 rubic1'>"
 						+ myarr[i].overview
 						+ "</p>"
 						+ "<div class='row my-2'>"
-						+ "<div class='col-3'><strong>Release Date-</strong></div>"
-						+ "<div id='releasedateofmovie' class='col-9'>"
+						+ "<div class='col-3 rubic1'>Release Date-</div>"
+						+ "<div id='releasedateofmovie' class='col-9 rubic1'>"
 						+ releaseDateNotAvialable
 						+ "</div>"
 						+ "</div>"
 						+ "<div class='row my-2'>"
-						+ "<div class='col-3'><strong>Rating-</strong></div>"
-						+ "<div id='ratingofmovie' class='col-9'>"
+						+ "<div class='col-3 rubic1'>Rating-</div>"
+						+ "<div id='ratingofmovie' class='col-9 rubic1'>"
 						+ voteNotAvialable
 						+ "</div>"
 						+ "</div>"
 						+ "</div>"
-						+ "<button id='favouritebutton' class='bg-primary' type='button' style='backgroung-color: blue;' onClick=addToFav("
+						+ "<button id='favouritebutton' class='bg-primary' type='button' onClick=addToFav("
 						+ i
 						+ ") class='btn btn-sm btn-secondary'>Add To Favourite</button>"
 						+ "</div>"
 						+ "<div class='col-md-4 align-self-center my-4'>"
 						+ "<img id='posterofmovie' class='img-fluid d-block' src='"
 						+ movieposter + "'> </div>";
-
-
-				/*var html_code="<div class='card mb-3'>"+
-				  "<img class='card-img-top' src='"
-						+ movieposter + "' alt='poster unavilable'>"+
-				  "<div class='card-body'>"+
-				    "<h5 class='card-title'>"
-				  + myarr[i].moviename+"</h5>"+
-				    "<p class='card-text'>"+ myarr[i].overview+"</p>"+
-				   " <p class='card-text'><small class='text-muted'>Release Date-"+ releaseDateNotAvialable+"</small></p>"+
-				   " <p class='card-text'><small class='text-muted'>Rating-"+ voteNotAvialable+"</small></p>"
-				   + "<button id='favouritebutton' type='button' onClick=removeFromFav("
-					+ i
-					+ ") class='btn btn-sm btn-secondary'>Add To Favourite</button>"+
-				  "</div>"+
-				"</div>";*/
 				document.getElementById('result').insertAdjacentHTML(
 						'beforeend', html_code);
 			}
-
 		}
 	};
 	xmlhttp.open('GET', "http://localhost:8080/MovieMagic/RetriveFromJson?",

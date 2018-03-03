@@ -2,18 +2,80 @@
 
 .margintobutton {
 	margin-right: 20px;
-	 background-color: white;
+	background-color: white;
 }
 
 #textcolourwhite {
 	color: white;
 }
 
-#navbarcolour {
-	color: #1E90FF;
+.navbar-custom {
+	color: #FFFFFF;
+	background-color: black;
 }
 
-.navbar-custom {
-    color: #FFFFFF;
-    background-color: #87CEFA;
+.one {
+	font-family: 'Patua One', cursive;
+}
+
+.socialicons {
+	padding-right: 10px;
+}
+
+.carouselimage {
+	height: 500px;
+}
+
+.signin {
+	padding-right: 10px;
+}
+
+.slabo {
+	font-family: 'Slabo 20px', serif;
+	color: white;
+}
+
+.worksans {
+	font-family: 'Work Sans', sans-serif;
+}
+
+.muli {
+	font-family: 'Muli', sans-serif;
+}
+
+.fira {
+	font-family: 'Fira Sans', sans-serif;
+}
+
+.arvo {
+	font-family: 'Arvo', serif;
+}
+
+.one {
+	font-family: 'Patua One', cursive;
+}
+
+.rubic {
+	font-family: 'Rubik', sans-serif;
+	font-size:25px;
+}
+.rubic1 {
+	font-family: 'Rubik', sans-serif;
+	font-size:20px;
+}
+
+.grey {
+	color: #2F4F4F;
+}
+
+.quick {
+	font-family: 'Quicksand', sans-serif;
+}
+
+.mon {
+	font-family: 'Arimo', sans-serif;
+}
+
+.fjalla {
+	font-family: 'Fjalla One', sans-serif;
 }
