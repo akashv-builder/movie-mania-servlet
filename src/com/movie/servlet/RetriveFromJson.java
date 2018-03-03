@@ -31,21 +31,11 @@ public class RetriveFromJson extends HttpServlet {
     	JSONArray arr = new JSONArray();
     	try {
 				arr = (JSONArray)parser.parse(new FileReader("/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/favorit.json"));
-				out.println(arr);
-				/*String s;
-				for(int i=0;i<arr.size();i++) {
-					obj=(JSONObject) arr.get(i);
-					//s = (String)obj.get("moviename");
-					out.println(obj);
-	    	}*/
-				
+				out.println(arr);	
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-    	
-    
-
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -87,7 +87,7 @@
 		</br> </br>
 
 	</div>
-	<div id="favoritesadded"><center><h4 class="one">WELCOME!</h4></center></div>
+	<div id="favoritesadded"><center><h4 id="errormsg" class="one">WELCOME!</h4></center></div>
 	<div class="py-5 bg-primary">
 		<div class="container">
 			<div id="cardcontainerformovie" class="row rubic">
