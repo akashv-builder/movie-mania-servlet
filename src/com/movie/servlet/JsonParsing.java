@@ -45,15 +45,8 @@ public class JsonParsing extends HttpServlet {
 			json.put("releasedate", releasedate);
 			json.put("poster", poster);
 			json.put("overview", overview);
-						
-		//if length exceeds 10, warning message is issued
-		if(jarray.size() < 10) {
+
 			jarray.add(json);
-		}
-		
-		else {
-			System.out.println("You have exceeded your limit");
-		}
 		
 		FileWriter jsonFile=null;
 		

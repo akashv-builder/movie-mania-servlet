@@ -67,10 +67,11 @@
 					you are a movie maniac, then you are at the right place.</p>
 			</div>
 		</div>
+		<form>
 		<div class="mx-auto text-center col-md-6">
 			<div id="imaginary_container">
 				<div class="input-group stylish-input-group">
-					<input id="usertext" type="text" class="form-control"
+					<input id="usertext" required type="text" class="form-control"
 						placeholder="Search Movie"> <span
 						class="input-group-addon">
 						<button class="btn btn-link my-2 my-sm-0" type="submit"
@@ -82,12 +83,11 @@
 				</div>
 			</div>
 		</div>
+		</form>
 		</br> </br>
 
 	</div>
-	<div id="favoritesadded">Alert if fav is added</div>
-	<button type="button" class="btn margintobutton mon"
-					onClick="ShowFavourite()">Show Favorites</button>
+	<div id="favoritesadded"><center><h4 class="one">WELCOME!</h4></center></div>
 	<div class="py-5 bg-primary">
 		<div class="container">
 			<div id="cardcontainerformovie" class="row rubic">

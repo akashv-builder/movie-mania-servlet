@@ -1,5 +1,5 @@
 var data;
-//"http://image.tmdb.org/t/p/w500/"
+var count=0;
 function getData() {
 	var xmlHttp = new XMLHttpRequest();
 	var word = document.getElementById("usertext").value;
@@ -72,21 +72,28 @@ function getData() {
 }
 
 function addToFav(i) {
-	var xmlhttp = new XMLHttpRequest();
-	alert(i);
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			document.getElementById("favoritesadded").innerHTML = xmlhttp.responseText;
-		}
-	};
-	//values to be sent to servlet
-	var params = "moviename=" + data.results[i].title + "&ratings="
-			+ data.results[i].vote_average + "&releasedate="
-			+ data.results[i].release_date + "&poster=" + data.results[i].poster_path + "&overview="
-			+ data.results[i].overview;
-	xmlhttp.open('GET', "http://localhost:8080/MovieMagic/JsonParsing?"
-			+ params, true);
-	xmlhttp.send();
+	if(count<10){
+		var xmlhttp = new XMLHttpRequest();
+		alert(i);
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("favoritesadded").innerHTML = xmlhttp.responseText;
+				count++;
+			}
+		};
+		//values to be sent to servlet
+		var params = "moviename=" + data.results[i].title + "&ratings="
+				+ data.results[i].vote_average + "&releasedate="
+				+ data.results[i].release_date + "&poster=" + data.results[i].poster_path + "&overview="
+				+ data.results[i].overview;
+		xmlhttp.open('GET', "http://localhost:8080/MovieMagic/JsonParsing?"
+				+ params, true);
+		xmlhttp.send();
+	}
+	else{
+		document.getElementById("favoritesadded").innerHTML = "You can not add more then !0 fav movies";
+	}
+	
 }
 
 
