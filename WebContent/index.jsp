@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
+<!-- starting of header -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,15 +13,17 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	type="text/css">
-<link rel="stylesheet" href="wireframe1.css">
+<!-- linking google font -->
 <link
 	href="https://fonts.googleapis.com/css?family=Patua+One|Arvo|Fira+Sans|Muli|Slabo+27px|Rubik|Work+Sans|Quicksand|Montserrat|Arimo|Fjalla+One"
 	rel="stylesheet">
+<!-- linking my css -->
+<link rel="stylesheet" href="wireframe1.css">
 <link rel="stylesheet" href="mycss.css">
 </head>
-
+<!-- ending of header -->
 <body>
-
+	<!-- starting of nav bar -->
 	<nav class="navbar navbar-custom navbar-expand-lg" id="navbarcolour">
 	<a id="textcolourwhite" class="navbar-brand font-weight-bold one"
 		href="index.html">Movie Mania</a>
@@ -56,7 +58,9 @@
 		</div>
 	</div>
 	</nav>
+	<!-- ending of nav bar -->
 
+	<!-- container for search box -->
 	<div class="container-fluid">
 		<div class="row">
 			<div class="mx-auto text-center col-md-6">
@@ -68,26 +72,32 @@
 			</div>
 		</div>
 		<form>
-		<div class="mx-auto text-center col-md-6">
-			<div id="imaginary_container">
-				<div class="input-group stylish-input-group">
-					<input id="usertext" required type="text" class="form-control"
-						placeholder="Search Movie"> <span
-						class="input-group-addon">
-						<button class="btn btn-link my-2 my-sm-0" type="submit"
-							onClick="getData()">
-							<i class="fa d-inline fa-lg fa-search text-primary"></i>
-						</button>
-					</span>
+			<div class="mx-auto text-center col-md-6">
+				<div id="imaginary_container">
+					<div class="input-group stylish-input-group">
+						<input id="usertext" required type="text" class="form-control"
+							placeholder="Search Movie"> <span
+							class="input-group-addon">
+							<button class="btn btn-link my-2 my-sm-0" type="submit"
+								onClick="getData()">
+								<i class="fa d-inline fa-lg fa-search text-primary"></i>
+							</button>
+						</span>
 
+					</div>
 				</div>
 			</div>
-		</div>
 		</form>
 		</br> </br>
-
 	</div>
-	<div id="favoritesadded"><center><h4 id="errormsg" class="one">WELCOME!</h4></center></div>
+	<!-- container for search box ends -->
+
+	<!-- div to show the response -->
+	<div id="favoritesadded">
+		<center>
+			<h4 id="errormsg" class="one">WELCOME!</h4>
+		</center>
+	</div>
 	<div class="py-5 bg-primary">
 		<div class="container">
 			<div id="cardcontainerformovie" class="row rubic">
@@ -100,6 +110,7 @@
 			<div id="result" class="row"></div>
 		</div>
 	</div>
+	<!-- container to show top reviews -->
 	<div class="py-5">
 		<div class="container-fluid">
 			<div class="row">
@@ -144,7 +155,8 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- container to show top reviews ends-->
+	<!-- footer starts -->
 	<div class="bg-dark py-3">
 		<div class="container">
 			<div class="row d-flex justify-content-between">
@@ -158,6 +170,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- footer ends -->
 	<script src="index.js" type="text/javascript"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
