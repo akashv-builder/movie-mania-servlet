@@ -187,7 +187,7 @@ function ShowFavourite() {
 		xmlhttp.send();
 	} else {
 		// msg to say add fav first
-		document.getElementById("favoritesadded").innerHTML = "Add Some Movie As Favourite First";
+		document.getElementById("errormsg").innerHTML = "Add Some Movie As Favourite First";
 	}
 
 }

@@ -83,7 +83,6 @@
 								<i class="fa d-inline fa-lg fa-search text-primary"></i>
 							</button>
 						</span>
-
 					</div>
 				</div>
 			</div>
