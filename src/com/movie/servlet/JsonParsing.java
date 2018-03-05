@@ -26,7 +26,6 @@ public class JsonParsing extends HttpServlet {
 	public JsonParsing() {
 		super();
 	}
-
 	// go get method to receive the request from jsp page
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -71,7 +70,6 @@ public class JsonParsing extends HttpServlet {
 				System.out.println("Error in parsing");
 			}
 		}
-
 		// if array size is less then 10 then only adding in array
 		if (jarray.size() < 10) {
 			jarray.add(json);
@@ -89,7 +87,6 @@ public class JsonParsing extends HttpServlet {
 		} else {
 			System.out.println("limit exceeded Can not add");
 		}
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

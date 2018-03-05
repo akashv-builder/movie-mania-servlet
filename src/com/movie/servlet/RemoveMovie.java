@@ -25,12 +25,10 @@ public class RemoveMovie extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		String value = request.getParameter("index");
-		
+		String value = request.getParameter("index");		
 		//index to be deleted
 		int index = Integer.parseInt(value);
 		JSONParser parser = new JSONParser(); 
@@ -51,7 +49,6 @@ public class RemoveMovie extends HttpServlet {
 			jsonFile.flush();
 		}		
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

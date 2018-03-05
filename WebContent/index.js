@@ -42,6 +42,7 @@ function getData() {
 					} else {
 						releaseDateNotAvialable = data.results[i].release_date;
 					}
+					
 					// creating dynamic card
 					var html_code = "<div class='col-lg-8 my-4' style=' background-color: white;'>"
 							+ "<h4 id='nameofmovie' class='mb-3 one'><strong>"
@@ -64,7 +65,7 @@ function getData() {
 							+ "</div>"
 							+ "</div>"
 							+ "</div>"
-							+ "<button id='favouritebutton' class='bg-primary' type='button' style='backgroung-color: blue;' onClick=addToFav("
+							+ "<button id='favouritebutton' class='bg-primary' type='button' onClick=addToFav("
 							+ i
 							+ ") class='btn btn-sm btn-secondary'>Add To Favourite</button>"
 							+ "</div>"
@@ -117,8 +118,7 @@ function ShowFavourite() {
 				// clearing the page before showing the fav movie
 				document.getElementById("cardcontainerformovie").innerHTML = "Add Some Favorite Movie First Into Your Favorite List, So that you can acces it later and view it.";
 				document.getElementById("result").innerHTML = "";
-				document.getElementById("errormsg").innerHTML = "";
-				
+				document.getElementById("errormsg").innerHTML = "";	
 				
 			} else {
 
@@ -164,9 +164,9 @@ function ShowFavourite() {
 							+ "</div>"
 							+ "</div>"
 							+ "</div>"
-							+ "<button id='favouritebutton' class='bg-primary' type='button' onClick=removeFromFav("
+							+ "<button id='removefavouritebutton' class='bg-primary' type='button' onClick=removeFromFav("
 							+ i
-							+ ") class='btn btn-sm btn-secondary'>Remove From Fav</button>"
+							+ ") class='btn btn-sm btn-secondary'>Remove From Favourite</button>"
 							+ "</div>"
 							+ "<div class='col-md-4 align-self-center my-4'>"
 							+ "<img id='posterofmovie' class='img-fluid d-block' src='http://image.tmdb.org/t/p/w500/"
@@ -176,7 +176,7 @@ function ShowFavourite() {
 							'beforeend', html_code);
 				}
 			}
-
+			
 		}
 	};
 	// making xml call to servlet
@@ -187,7 +187,6 @@ function ShowFavourite() {
 // function to remove
 function removeFromFav(i) {
 	var xmlhttp = new XMLHttpRequest();
-	alert(i);
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			// showing the response on the page
