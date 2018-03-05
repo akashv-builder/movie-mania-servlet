@@ -1,6 +1,7 @@
 //variable to store all the info coming from imdb api 
 var data;
 
+var poster;
 // function to hit imdb api and get the required data
 function getData() {
 	var xmlHttp = new XMLHttpRequest();
@@ -27,7 +28,6 @@ function getData() {
 				data = myArr;
 				// retrieving the response one by one
 				for (var i = 0; i < myArr.results.length; i++) {
-
 					var voteNotAvialable;
 					// condition if vote is 0
 					if (data.results[i].vote_average == 0) {
@@ -41,6 +41,13 @@ function getData() {
 						releaseDateNotAvialable = "Release Date Not Avialable";
 					} else {
 						releaseDateNotAvialable = data.results[i].release_date;
+					}
+					
+					if( data.results[i].poster_path==null){
+						poster="./image/notavilable.jpg";
+					}
+					else{
+						poster="http://image.tmdb.org/t/p/w500/"+data.results[i].poster_path;
 					}
 					
 					// creating dynamic card
@@ -65,13 +72,13 @@ function getData() {
 							+ "</div>"
 							+ "</div>"
 							+ "</div>"
-							+ "<button id='favouritebutton' class='bg-primary' type='button' onClick=addToFav("
+							+ "<button id='favouritebutton"+i+"' class='btn btn-primary my-2' type='button' onClick=addToFav("
 							+ i
-							+ ") class='btn btn-sm btn-secondary'>Add To Favourite</button>"
+							+ ") >Add To Favourite</button>"
 							+ "</div>"
 							+ "<div class='col-md-4 align-self-center my-4'>"
-							+ "<img id='posterofmovie' class='img-fluid d-block' src='http://image.tmdb.org/t/p/w500/"
-							+ data.results[i].poster_path + "'> </div>";
+							+ "<img id='posterofmovie' class='img-fluid d-block' src='"
+							+ poster + "'> </div>";
 					// setting the dynamic card
 					document.getElementById('cardcontainerformovie')
 							.insertAdjacentHTML('beforeend', html_code);
@@ -91,13 +98,20 @@ function addToFav(i) {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			document.getElementById("errormsg").innerHTML = xmlhttp.responseText;
+			document.getElementById("favouritebutton"+i).disabled = true;
 		}
 	};
+	if( data.results[i].poster_path==null){
+		poster="./image/notavilable.jpg";
+	}
+	else{
+		poster="http://image.tmdb.org/t/p/w500/"+data.results[i].poster_path;
+	}
 	// values to be sent to servlet
 	var params = "moviename=" + data.results[i].title + "&ratings="
 			+ data.results[i].vote_average + "&releasedate="
 			+ data.results[i].release_date + "&poster="
-			+ data.results[i].poster_path + "&overview="
+			+ poster + "&overview="
 			+ data.results[i].overview;
 	// sending data to servlet
 	xmlhttp.open('GET', "http://localhost:8081/MovieMagic/JsonParsing?"
@@ -142,6 +156,7 @@ function ShowFavourite() {
 					} else {
 						releaseDateNotAvialable = myarr[i].releasedate;
 					}
+					
 					// creating dynamic card to show result
 					var html_code = "<div class='col-lg-8 my-4' style=' background-color: white;'>"
 							+ "<h4 id='nameofmovie' class='mb-3 one'><strong>"
@@ -164,12 +179,12 @@ function ShowFavourite() {
 							+ "</div>"
 							+ "</div>"
 							+ "</div>"
-							+ "<button id='removefavouritebutton' class='bg-primary' type='button' onClick=removeFromFav("
+							+ "<button id='removefavouritebutton' class='btn btn-primary my-2' type='button' onClick=removeFromFav("
 							+ i
-							+ ") class='btn btn-sm btn-secondary'>Remove From Favourite</button>"
+							+ ")>Remove From Favourite</button>"
 							+ "</div>"
 							+ "<div class='col-md-4 align-self-center my-4'>"
-							+ "<img id='posterofmovie' class='img-fluid d-block' src='http://image.tmdb.org/t/p/w500/"
+							+ "<img id='posterofmovie' class='img-fluid d-block' src='"
 							+ myarr[i].poster + "'> </div>";
 					// displaying the dynamic element created
 					document.getElementById('result').insertAdjacentHTML(
@@ -191,6 +206,7 @@ function removeFromFav(i) {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			// showing the response on the page
 			document.getElementById("errormsg").innerHTML = xmlhttp.responseText;
+			document.getElementById("favouritebutton"+i).disabled = false;
 		}
 	};
 	// values to be sent to servlet
