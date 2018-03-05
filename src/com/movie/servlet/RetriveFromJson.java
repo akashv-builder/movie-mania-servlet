@@ -28,14 +28,16 @@ public class RetriveFromJson extends HttpServlet {
 		// setting the response tyoe
 		PrintWriter out = response.getWriter();
 		// creating json parser and array to retrieve value from json
+
 		JSONParser parser = new JSONParser();
 		JSONArray arr = new JSONArray();
 		try {
 			// opening the file and parsing in json object
 			arr = (JSONArray) parser
-					.parse(new FileReader("/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/favorit.json"));
+					.parse(new FileReader("./favorite.json"));
 			// sending the response
-			out.println(arr);
+				out.println(arr);
+			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

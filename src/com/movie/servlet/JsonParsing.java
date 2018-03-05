@@ -1,5 +1,7 @@
 package com.movie.servlet;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,11 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 @WebServlet("/JsonParsing")
 public class JsonParsing extends HttpServlet {
 	// global array
-	JSONArray jarray = new JSONArray();
+	static JSONArray jarray = new JSONArray();
 	private static final long serialVersionUID = 1L;
 
 	// array of json objects
@@ -23,25 +27,30 @@ public class JsonParsing extends HttpServlet {
 		super();
 	}
 
-	// go get method to recieve the request from jsp page
+	// go get method to receive the request from jsp page
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// creating json object
+
+		// creating json object,array and a parser
 		JSONObject json = new JSONObject();
+		JSONArray jarray = new JSONArray();
+		JSONParser parser = new JSONParser();
 
 		// setting response type
 		response.setContentType("application/json");
 		// sending the response
 		String moviename = request.getParameter("moviename");
 		PrintWriter out = response.getWriter();
-		// shows the movie added
+		// show the movie added
 		out.print("Thank you for adding <b>" + moviename + "</b> to your favorite locations");
+
 		// retrieving the values from the request
 		String rating = request.getParameter("ratings");
 		String releasedate = request.getParameter("releasedate");
 		String poster = request.getParameter("poster");
 		String overview = request.getParameter("overview");
 
+		// storing key value pairs getting from GET
 		// json object to store key value pairs
 		json.put("moviename", moviename);
 		json.put("rating", rating);
@@ -49,22 +58,38 @@ public class JsonParsing extends HttpServlet {
 		json.put("poster", poster);
 		json.put("overview", overview);
 
-		// adding json object to json array
-		jarray.add(json);
-
-		FileWriter jsonFile = null;
-
-		try {
-			// opening a file and writing json array in it
-			jsonFile = new FileWriter("/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/favorit.json");
-			jsonFile.write(jarray.toString());
-			System.out.println(json.toString());
-		} catch (Exception e) {
-			// in case of exception
-			System.out.println("Please enter a valid path where you want to store your json");
-		} finally {
-			jsonFile.flush();
+		// opening file
+		File f = new File("./jsonfile/favorite.json");
+		// checking if file exits or not
+		if (f.exists()) {
+			try {
+				// if array exists already take the values from array else we will make a new
+				// file
+				jarray = (JSONArray) parser.parse(
+						new FileReader("./favorite.json"));
+			} catch (ParseException e) {
+				System.out.println("Error in parsing");
+			}
 		}
+
+		// if array size is less then 10 then only adding in array
+		if (jarray.size() < 10) {
+			jarray.add(json);
+			FileWriter jsonFile = null;
+			try {
+				// over writing the previously existing file
+				jsonFile = new FileWriter("./jsonfile/favorite.json");
+				jsonFile.write(jarray.toString());
+				System.out.println(json.toString());
+			} catch (Exception e) {
+				System.out.println("Please enter a valid path to store json");
+			} finally {
+				jsonFile.flush();
+			}
+		} else {
+			System.out.println("limit exceeded Can not add");
+		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

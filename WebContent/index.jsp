@@ -26,7 +26,7 @@
 	<!-- starting of nav bar -->
 	<nav class="navbar navbar-custom navbar-expand-lg" id="navbarcolour">
 	<a id="textcolourwhite" class="navbar-brand font-weight-bold one"
-		href="index.html">Movie Mania</a>
+		href="index.jsp">Movie Mania</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarSupportedContent"
 		aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -47,10 +47,10 @@
 			</li>
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
-			<img class="socialicons" src="../MovieMagic/images/facebook.png"
+			<img class="socialicons" src="./image/facebook.png"
 				alt="facebook"> <img class="socialicons"
-				src="../images/insta.png" alt="insta"> <img
-				class="socialicons" src="../images/twitter.png" alt="insta">
+				src="./image/insta.png" alt="insta"> <img
+				class="socialicons" src="./image/twitter.png" alt="insta">
 		</form>
 		<div class="btn-group" role="group" aria-label="Basic example">
 			<button type="button" class="btn margintobutton mon">Sign Up</button>
@@ -78,11 +78,12 @@
 						<input id="usertext" required type="text" class="form-control"
 							placeholder="Search Movie"> <span
 							class="input-group-addon">
-							<button class="btn btn-link my-2 my-sm-0" type="submit"
+							<button type ="button" class="btn btn-link my-2 my-sm-0"
 								onClick="getData()">
 								<i class="fa d-inline fa-lg fa-search text-primary"></i>
 							</button>
 						</span>
+
 					</div>
 				</div>
 			</div>

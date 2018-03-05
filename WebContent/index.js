@@ -1,10 +1,5 @@
 //variable to store all the info coming from imdb api 
 var data;
-// variable to store count for favourite
-var count = 0;
-// variable to apply validation if user directly click add to fav without adding
-// a movie
-var favvalidation = 0;
 
 // function to hit imdb api and get the required data
 function getData() {
@@ -15,13 +10,13 @@ function getData() {
 		// if search box is empty
 		document.getElementById("errormsg").innerHTML = "*****Please Enter A Movie To Search*****";
 	} else {
-		// clearing the page before showing the result
-		document.getElementById('result').innerHTML = "";
-		document.getElementById("cardcontainerformovie").innerHTML = "";
 		// url to hit
 		var url = "https://api.themoviedb.org/3/search/movie?api_key=628feb1e5d19aa715bd6f0824546c81d&query="
 				+ word;
-
+		// clearing the page before showing the result
+		document.getElementById('result').innerHTML = "";
+		document.getElementById("cardcontainerformovie").innerHTML = "";
+		document.getElementById("errormsg").innerHTML = "Results Are Below-";
 		xmlHttp.onreadystatechange = function() {
 			// in case of 404 error
 			if (this.status == 404) {
@@ -90,46 +85,47 @@ function getData() {
 
 // function to add fav movie
 function addToFav(i) {
-	// applying condition if count<10 then only add to fav
-	if (count < 10) {
-		var xmlhttp = new XMLHttpRequest();
-		alert(i);
-		// setting the movie name added on page in respone
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				document.getElementById("favoritesadded").innerHTML = xmlhttp.responseText;
-				count++;
-				favvalidation = 1;
-			}
-		};
-		// values to be sent to servlet
-		var params = "moviename=" + data.results[i].title + "&ratings="
-				+ data.results[i].vote_average + "&releasedate="
-				+ data.results[i].release_date + "&poster="
-				+ data.results[i].poster_path + "&overview="
-				+ data.results[i].overview;
-		// sending data to servlet
-		xmlhttp.open('GET', "http://localhost:8080/MovieMagic/JsonParsing?"
-				+ params, true);
-		xmlhttp.send();
-	} else {
-		// in case when count>10
-		document.getElementById("favoritesadded").innerHTML = "You can not add more then !0 fav movies";
-	}
+	var xmlhttp = new XMLHttpRequest();
+	// setting the movie name added on page in respone
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("errormsg").innerHTML = xmlhttp.responseText;
+		}
+	};
+	// values to be sent to servlet
+	var params = "moviename=" + data.results[i].title + "&ratings="
+			+ data.results[i].vote_average + "&releasedate="
+			+ data.results[i].release_date + "&poster="
+			+ data.results[i].poster_path + "&overview="
+			+ data.results[i].overview;
+	// sending data to servlet
+	xmlhttp.open('GET', "http://localhost:8081/MovieMagic/JsonParsing?"
+			+ params, true);
+	xmlhttp.send();
 }
 
 // function to show fav movie
 function ShowFavourite() {
-	// if it is 1 then only show fav else give msg to add fav first
-	if (favvalidation == 1) {
-		var xmlhttp = new XMLHttpRequest();
-		// clearing the page before showing the fav movie
-		document.getElementById('result').innerHTML = "";
-		document.getElementById("cardcontainerformovie").innerHTML = "";
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				// geting the response in a variable
-				var myarr = JSON.parse(this.responseText);
+
+	var xmlhttp = new XMLHttpRequest();
+
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			// geting the response in a variable
+			var myarr = JSON.parse(this.responseText);
+			if (myarr.length == 0) {
+				// clearing the page before showing the fav movie
+				document.getElementById("cardcontainerformovie").innerHTML = "Add Some Favorite Movie First Into Your Favorite List, So that you can acces it later and view it.";
+				document.getElementById("result").innerHTML = "";
+				document.getElementById("errormsg").innerHTML = "";
+				
+				
+			} else {
+
+				// clearing the page before showing the fav movie
+				document.getElementById("result").innerHTML = "";
+				document.getElementById("cardcontainerformovie").innerHTML = "";
+				document.getElementById("errormsg").innerHTML = "Favorite List-";
 				// showing the response on page
 				for (var i = 0; i < myarr.length; i++) {
 					// condition if vote is 0
@@ -180,16 +176,13 @@ function ShowFavourite() {
 							'beforeend', html_code);
 				}
 			}
-		};
-		// making xml call to servlet
-		xmlhttp.open('GET',
-				"http://localhost:8080/MovieMagic/RetriveFromJson?", true);
-		xmlhttp.send();
-	} else {
-		// msg to say add fav first
-		document.getElementById("errormsg").innerHTML = "Add Some Movie As Favourite First";
-	}
 
+		}
+	};
+	// making xml call to servlet
+	xmlhttp.open('GET', "http://localhost:8081/MovieMagic/RetriveFromJson?",
+			true);
+	xmlhttp.send();
 }
 // function to remove
 function removeFromFav(i) {
@@ -198,13 +191,13 @@ function removeFromFav(i) {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			// showing the response on the page
-			document.getElementById("favoritesadded").innerHTML = xmlhttp.responseText;
+			document.getElementById("errormsg").innerHTML = xmlhttp.responseText;
 		}
 	};
 	// values to be sent to servlet
-	var params = "moviename=" + data.results[i].title;
+	var params = "index=" + i;
 	// sending value by get to servlet
-	xmlhttp.open('GET', "http://localhost:8080/MovieMagic/RemoveMovie?"
+	xmlhttp.open('GET', "http://localhost:8081/MovieMagic/RemoveMovie?"
 			+ params, true);
 	xmlhttp.send();
 }

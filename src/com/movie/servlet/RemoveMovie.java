@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 @WebServlet("/RemoveMovie")
 public class RemoveMovie extends HttpServlet {
@@ -27,50 +28,28 @@ public class RemoveMovie extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// creating json object and array to retrieve value from json
-		JSONArray array = new JSONArray();
-		JSONObject movie = new JSONObject();
-
-		// setting response type
-		response.setContentType("application/json");
-		// getting the movie to delete from request
-		String moviename = request.getParameter("moviename");
-		// sending the response
 		PrintWriter out = response.getWriter();
-		// showing the movie deleted
-		out.print("Thank you for removing <b>" + moviename + "</b> from your favorite locations");
-		// opening the file
-		String fileName = "/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/favorit.json";
-		JSONParser parser = new JSONParser();
+		String value = request.getParameter("index");
+		
+		//index to be deleted
+		int index = Integer.parseInt(value);
+		JSONParser parser = new JSONParser(); 
+  	JSONArray array = new JSONArray();
+  	//reading the json file
+  	FileWriter jsonFile = null;
 		try {
-			// parsing the file into json array
-			array = (JSONArray) parser.parse(new FileReader(fileName));
-			// if id exists, do not add and return error
-			for (int looper = 0; looper < array.size(); looper++) {
-				movie = (JSONObject) array.get(looper);
-				// matching the movie with json
-				if (String.valueOf(movie.get("moviename")).equals(String.valueOf(moviename))) {
-					// if found remove entire array
-					array.remove(looper);
-					FileWriter jsonFile = null;
-					try {
-						jsonFile = new FileWriter(
-								"/home/akash/Work/workspace-sts-3.9.2.RELEASE/MovieMagic/favorit.json");
-						jsonFile.write(array.toString());
-					} catch (Exception e) {
-						System.out.println("Please enter a valid path where you want to store your json");
-					} finally {
-						jsonFile.flush();
-						jsonFile.close();
-					}
-					break;
-				}
-			}
-		} catch (Exception e) {
-			// if exception occurs
-			e.printStackTrace();
-		}
+			array = (JSONArray)parser.parse(new FileReader("./favorite.json"));
+			array.remove(index);
+			out.print("Successfully removed");
+			//writing the array to the same file
+			jsonFile =  new FileWriter("./favorite.json");
+			jsonFile.write(array.toString());
+			
+		} catch (ParseException e) {
+			System.out.println("Your file could not be found");
+		}finally {
+			jsonFile.flush();
+		}		
 	}
 
 	/**
